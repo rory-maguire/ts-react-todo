@@ -1,4 +1,8 @@
-const todos: Todo[] = [
+import { ChangeEvent, HtmlHTMLAttributes } from "react";
+import { Todo } from "../Interfaces/index";
+import { v4 as uuidv4 } from "uuid";
+
+export const todosData: Todo[] = [
 	{ id: 1, todo: "I have to walk the dogs" },
 	{ id: 2, todo: "I need to take the bins out" },
 	{ id: 3, todo: "I need to make a cuppa" },
@@ -7,9 +11,6 @@ const todos: Todo[] = [
 	{ id: 6, todo: "I need to tidy my room " },
 ];
 
-interface Todo {
-	id: number;
-	todo: string;
-}
-
-export default todos;
+export const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+	setTodos([...todos, { id: uuidv4(), todo: e.target.value }]);
+};
