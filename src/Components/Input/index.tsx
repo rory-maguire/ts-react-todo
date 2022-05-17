@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 interface IProps {
-	handleSubmit?: () => void;
+	handleSubmit: (e: any) => void;
 }
 
 const Input: FC<IProps> = ({ handleSubmit }) => {
