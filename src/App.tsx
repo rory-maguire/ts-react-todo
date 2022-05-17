@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, ChangeEvent } from "react";
+import React, { ChangeEvent, ReactElement, useState } from "react";
 import List from "../src/Components/List";
 import Input from "./Components/Input";
 import "./App.css";
@@ -9,14 +9,15 @@ function App(): ReactElement {
 
 	const randomNum = (): number => Math.floor(Math.random() * 1000000);
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+	const handleSubmit = (e: ChangeEvent<HTMLInputElement>): void => {
+		e.preventDefault();
 		setTodos([...todos, { id: randomNum(), todo: e.target.value }]);
 	};
 
 	return (
 		<div className="App">
-			<Input />
-			<List todos={todos} handleChange={handleChange} />
+			<Input handleSubmit={handleSubmit} />
+			<List todos={todos} />
 		</div>
 	);
 }

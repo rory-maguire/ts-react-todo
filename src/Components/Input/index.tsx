@@ -1,7 +1,18 @@
-import React from "react";
+import { FC } from "react";
 
-function Input() {
-	return <div>Input</div>;
+interface IProps {
+	handleSubmit?: () => void;
 }
+
+const Input: FC<IProps> = ({ handleSubmit }) => {
+	return (
+		<div>
+			<form onSubmit={handleSubmit}>
+				<input placeholder="task..." type="text"></input>
+				<button type="submit">Add</button>
+			</form>
+		</div>
+	);
+};
 
 export default Input;
